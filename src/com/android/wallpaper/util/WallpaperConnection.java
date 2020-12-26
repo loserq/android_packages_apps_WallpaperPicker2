@@ -74,7 +74,8 @@ public class WallpaperConnection extends IWallpaperConnection.Stub implements Se
             @Nullable WallpaperConnectionListener listener,
             @Nullable Rect wallpaperPositionInScreen) {
         mActivity = activity;
-        mIntent = intent;
+        mIntent = new Intent("android.service.wallpaper.WallpaperService");
+        mIntent.setPackage("com.android.customization.picker.CustomizationPickerActivity");
         mListener = listener;
         mWallpaperPreviewRect = wallpaperPositionInScreen;
     }
