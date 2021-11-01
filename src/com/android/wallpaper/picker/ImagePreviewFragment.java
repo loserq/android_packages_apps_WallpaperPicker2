@@ -166,10 +166,13 @@ public class ImagePreviewFragment extends PreviewFragment {
 
         view.measure(makeMeasureSpec(mScreenSize.x, EXACTLY),
                 makeMeasureSpec(mScreenSize.y, EXACTLY));
-        ((CardView) mWorkspaceSurface.getParent())
-                .setRadius(SizeCalculator.getPreviewCornerRadius(
-                        activity, mContainer.getMeasuredWidth()));
-
+        if (SizeCalculator.getPreviewCornerRadius(activity, mContainer.getMeasuredWidth())==0) {
+            ((CardView) mWorkspaceSurface.getParent()).setRadius(24);
+        }else{
+             ((CardView) mWorkspaceSurface.getParent())
+                     .setRadius(SizeCalculator.getPreviewCornerRadius(
+                                            activity, mContainer.getMeasuredWidth()));
+        }
         renderImageWallpaper();
         renderWorkspaceSurface();
 

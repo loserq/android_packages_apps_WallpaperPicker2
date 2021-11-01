@@ -64,7 +64,11 @@ public final class WallpaperSectionView extends SectionView {
         layoutParams.height = cardHeight;
 
         // Match device corner
-        cardView.setRadius(
-                SizeCalculator.getPreviewCornerRadius((Activity) getContext(), cardWidth));
+        if(SizeCalculator.getPreviewCornerRadius((Activity) getContext(), cardWidth)==0){
+	    cardView.setRadius(24);
+	}else{
+	    cardView.setRadius(
+	        SizeCalculator.getPreviewCornerRadius((Activity) getContext(), cardWidth));
+	}
     }
 }
